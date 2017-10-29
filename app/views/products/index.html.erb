@@ -1,0 +1,12 @@
+<h1>Rainforest</h1>
+
+<%= link_to("Create New Product", new_product_path) %>
+
+<% @products.each do |product| %>
+  <div class="product-card">
+    <h3><%= link_to("#{product.name}", product_path(product)) %></h3>
+    <p><%= product.description %></p>
+    <p><%= number_to_currency(product.price_in_cents / 100.00) %></p>
+    <br>
+  </div>
+<% end %>
