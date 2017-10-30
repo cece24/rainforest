@@ -40,8 +40,11 @@ class ProductsController < ApplicationController
     end
   end
 
-  def delete
-    #code
+  def destroy
+    find_product
+    @product.destroy
+    flash[:notice] = "Product has been deleted!"
+    redirect_to products_url
   end
 
   private
