@@ -14,7 +14,11 @@
     <% flash.each do |type, msg| %>
       <p><%= msg %></p>
     <% end %>
-    
+
+    <nav>
+      <%= link_to "Home", products_path %> | <%= link_to("Add New Product", new_product_path) %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
