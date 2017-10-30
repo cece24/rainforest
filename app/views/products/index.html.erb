@@ -2,7 +2,7 @@
   <div class="product-card">
     <h3><%= link_to("#{product.name}", product_path(product)) %></h3>
     <p><%= product.description %></p>
-    <p>Price: <%= number_to_currency(product.price_in_cents / 100.00) %></p>
+    <p>Price: <%= product.price_in_dollars %></p>
     <br>
   </div>
 <% end %>
