@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :load_product
+  before_action :load_review, only: %i(edit update destroy)
 
   def create
     @review = @product.reviews.build(review_params)
@@ -14,11 +15,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = @product.reviews.find(params[:id])
   end
 
   def update
-    @review = @product.reviews.find(params[:id])
     @review.update(review_params)
 
     if @review.save
@@ -31,7 +30,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-
+    @review.destroy
+    flash[:notice] = "The review has been deleted!"
+    redirect_to product_url(@product)
   end
 
   private
@@ -42,5 +43,9 @@ class ReviewsController < ApplicationController
 
   def load_product
     @product = Product.find(params[:product_id])
+  end
+
+  def load_review
+    @review = @product.reviews.find(params[:id])
   end
 end
