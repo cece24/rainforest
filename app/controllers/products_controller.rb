@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: %i(show edit update)
+  before_action :find_product, only: %i(show edit update destroy)
 
   def index
     @products = Product.all
@@ -21,16 +21,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    find_product
     @review = @product.reviews.new
   end
 
   def edit
-    find_product
   end
 
   def update
-    find_product
     @product.update(product_params)
 
     if @product.save
@@ -42,7 +39,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    find_product
     @product.destroy
     flash[:notice] = "Product has been deleted!"
     redirect_to products_url
