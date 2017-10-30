@@ -13,7 +13,8 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    #code
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.find(params[:id])
   end
 
   def update
