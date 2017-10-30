@@ -1,13 +1,14 @@
-<% if product.errors.any? %>
+<%= form_for product do |f| %>
+
+  <% if product.errors.any? %>
   <h4><%= pluralize(product.errors.count, "error") %> prevented this product from being saved: </h4>
   <ul>
     <% product.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <li><%= msg %></li>
     <% end %>
   </ul>
-<% end %>
+  <% end %>
 
-<%= form_for product do |f| %>
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>

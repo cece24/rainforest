@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
 
   def show
     find_product
+    @review = @product.reviews.new
   end
 
   def edit
