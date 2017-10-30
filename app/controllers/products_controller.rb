@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :find_product, only: %i(show edit update)
+
   def index
     @products = Product.all
   end
@@ -19,15 +21,23 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    find_product
   end
 
   def edit
-
+    find_product
   end
 
   def update
-    #code
+    find_product
+    @product.update(product_params)
+
+    if @product.save
+      flash[:notice] = "#{ @product.name } has been updated!"
+      redirect_to product_url(@product)
+    else
+      render :edit
+    end
   end
 
   def delete
@@ -38,5 +48,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :price_in_cents)
+  end
+
+  def find_product
+    @product = Product.find(params[:id])
   end
 end
