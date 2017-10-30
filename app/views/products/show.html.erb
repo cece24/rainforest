@@ -13,7 +13,7 @@
 
 <% if @product.reviews.any? %>
   <ul>
-    <% @product.reviews_by_create_date.each do |review| %>
+    <% @product.reviews.order_by_newest.each do |review| %>
       <% if review.comment.present? %>
         <li>
           <p><%= review.comment %></p>
