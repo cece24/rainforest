@@ -1,0 +1,32 @@
+<h2>Create New Account</h2>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <h3><%= pluralize(@user.errors.count, 'error') %> prevented your new account from being created:</h3>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>

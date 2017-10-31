@@ -16,7 +16,9 @@
     <% end %>
 
     <nav>
-      <%= link_to "Home", products_path %> | <%= link_to("Add New Product", new_product_path) %>
+      <p><%= link_to "Home", products_path %> | <%= link_to "Register", new_users_path %> |
+
+        <%= link_to("Add New Product", new_product_path) %></p>
     </nav>
 
     <%= yield %>
