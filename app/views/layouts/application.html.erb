@@ -16,9 +16,12 @@
     <% end %>
 
     <nav>
-      <p><%= link_to "Home", products_path %> | <%= link_to "Register", new_users_path %> |
+      <p><%= link_to "Home", products_path %>
+        | <%= link_to "Register", new_users_path %>
+        | <%= link_to "Log In", new_sessions_path %>
+        | <%= link_to "Log Out", sessions_path, method: :delete, data: { confirm: "Are you sure you want to log out?"} %>
 
-        <%= link_to("Add New Product", new_product_path) %></p>
+        | <%= link_to("Add New Product", new_product_path) %></p>
     </nav>
 
     <%= yield %>
